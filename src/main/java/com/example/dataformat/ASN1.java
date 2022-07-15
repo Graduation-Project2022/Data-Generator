@@ -9,23 +9,22 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 public class ASN1 {
+    String RPF;
     File file;
     BufferedWriter fileBuffer;
     String fileName, prePath;
     StringBuilder cdrBuilder;
     int CDRsLengthWithoutHeader;
-    public ASN1(String prePath, String fileName) {
+    public ASN1(String prePath, String fileName, int RPF) {
         this.prePath = prePath;
         this.cdrBuilder = new StringBuilder();
         this.fileName = fileName + "_"+System.currentTimeMillis() + ".asn1";
         this.file = new File(prePath + "\\" + this.fileName);
         fileBuffer = null;
+        this.RPF = intToHex(RPF, 8);
         try {
             fileBuffer = new BufferedWriter(new FileWriter(file));
-            fileBuffer.write("00 05 bd a8 00 00 00 32 a2 a2 b6 2d da 00 b6 2d da 00 00 00 0b b8 00 00 00 01 04 a7 01 02 c7 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00");
-
-
-
+            fileBuffer.write(this.RPF+" 00 00 00 32 a2 a2 b6 2d da 00 b6 2d da 00 00 00 0b b8 00 00 00 01 04 a7 01 02 c7 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

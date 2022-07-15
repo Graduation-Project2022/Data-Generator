@@ -16,6 +16,10 @@ public class DataGenerator extends Application {
         stage.getIcons().add(new Image("file:icon.png"));
         stage.show();
     }
+    @Override
+    public void stop(){
+        System.exit(0);
+    }
     public static void main(String[] args) {
         launch();
     }

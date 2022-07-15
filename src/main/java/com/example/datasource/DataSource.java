@@ -75,7 +75,7 @@ public class DataSource extends Thread{
         }
     }
     private void generateCDRs(){
-        ASN1 asnFile = new ASN1(prePath, fileName);
+        ASN1 asnFile = new ASN1(prePath, fileName, RPF);
         for (int i = 0; i < RPF; i++) {
             CDR cdr = new CDR();
             asnFile.addCDR(cdr);
