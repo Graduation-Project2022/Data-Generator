@@ -1,5 +1,6 @@
 package com.example.dataformat;
 
+import com.example.recordtype.CDR;
 import com.example.recordtype.MeterReading;
 
 import java.io.File;
@@ -38,6 +39,18 @@ public class CSV {
         catch (IOException e){
             e.printStackTrace();
         }
+    }
+
+    public void addCDR(CDR cdr){
+        try {
+            fileWriter.write(cdr.getNumberA()+delimiter);
+            fileWriter.write(cdr.getNumberB()+delimiter);
+            fileWriter.write(cdr.getDateUnix()+delimiter);
+            fileWriter.write((int) (cdr.getDuration()/100000) + "\n");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 
     public FileWriter getFileWriter(){

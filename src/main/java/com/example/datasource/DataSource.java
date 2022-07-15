@@ -75,13 +75,33 @@ public class DataSource extends Thread{
         }
     }
     private void generateCDRs(){
-        ASN1 asnFile = new ASN1(prePath, fileName, RPF);
-        for (int i = 0; i < RPF; i++) {
-            CDR cdr = new CDR();
-            asnFile.addCDR(cdr);
+        switch (format){
+            case "ASN.1":
+                ASN1 asnFile = new ASN1(prePath, fileName, RPF);
+                for (int i = 0; i < RPF; i++) {
+                    CDR cdr = new CDR();
+                    asnFile.addCDR(cdr);
+                }
+                asnFile.writeFileHeader();
+                asnFile.close();
+                asnFile.copy(targetPath);
+                break;
+            case "CSV":
+                CSV csvFile = new CSV(prePath, fileName, delimiter);
+                for (int i = 0; i < RPF; i++) {
+                    CDR cdr = new CDR();
+                    csvFile.addCDR(cdr);
+                }
+                try {
+                    csvFile.getFileWriter().close();
+                    csvFile.copy(targetPath);
+                }
+                catch (IOException e){
+                    e.printStackTrace();
+                }
+                break;
         }
-        asnFile.close();
-        asnFile.copy(targetPath);
+
     }
     public void pause(){
         this.suspend();

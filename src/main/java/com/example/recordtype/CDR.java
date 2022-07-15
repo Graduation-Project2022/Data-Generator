@@ -33,6 +33,9 @@ public class CDR {
     public String getDateTime() {
         return dateTime;
     }
+    public long getDateUnix() {
+        return date.getTime();
+    }
     public int getDuration() {
         return duration;
     }

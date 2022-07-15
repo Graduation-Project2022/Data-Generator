@@ -24,12 +24,11 @@ public class ASN1 {
         this.RPF = intToHex(RPF, 8);
         try {
             fileBuffer = new BufferedWriter(new FileWriter(file));
-            fileBuffer.write(this.RPF+" 00 00 00 32 a2 a2 b6 2d da 00 b6 2d da 00 00 00 0b b8 00 00 00 01 04 a7 01 02 c7 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00");
+            fileBuffer.write("LL LL LL LL 00 00 00 32 a2 a2 b6 2d da 00 b6 2d da 00 "+this.RPF+
+                    " 00 00 00 01 04 a7 01 02 c7 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
-
     }
     public void addCDR(CDR cdr){
         try {
@@ -38,9 +37,7 @@ public class ASN1 {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
     }
-
     private String generateEncodedCDR(CDR cdr){
         cdrBuilder.append(listOfCallingPartyAddress(cdr));
         cdrBuilder.append(calledPartyAddress(cdr));
@@ -49,7 +46,6 @@ public class ASN1 {
         cdrBuilder.insert(0, addCDRHeader(cdrBuilder.toString()));
         return cdrBuilder.toString();
     }
-
     private String addCDRHeader(String cdrWithoutHeader){
         int CDRsLengthInBytes = (cdrWithoutHeader.length()+1)/3;
         /*
@@ -71,7 +67,6 @@ public class ASN1 {
         }
         return returnString.toString();
     }
-
     private String calledPartyAddress(CDR cdr){
         return "a7 13 81 11 74 65 6c 3a 2b 32 30 31 " + cdr.getHexCompanyB() + stringToHex(cdr.getNumberBWithoutCompany());
     }
@@ -108,6 +103,13 @@ public class ASN1 {
     public void copy(String path){
         try {
             Files.copy(Paths.get(prePath + "\\" + this.fileName), Paths.get(path + "\\" + this.fileName));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    public void writeFileHeader(){
+        try {
+            fileBuffer.write("Kareem",0,5);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
