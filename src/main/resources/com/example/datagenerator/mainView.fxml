@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.collections.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox fx:id="mainV" alignment="CENTER" prefHeight="440.0" prefWidth="321.0" spacing="5.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.datagenerator.Controller">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+
+    <Label fx:id="titleL" text="Data Generator" textOverrun="CLIP">
+      <font>
+         <Font name="Times New Roman" size="35.0" />
+      </font></Label>
+   <HBox prefHeight="18.0" prefWidth="106.0" spacing="60.0">
+      <children>
+         <RadioButton mnemonicParsing="false" onAction="#onMeterReadingSelected" selected="true" text="Meter Readings">
+            <toggleGroup>
+               <ToggleGroup fx:id="toggleGroup" />
+            </toggleGroup></RadioButton>
+         <RadioButton mnemonicParsing="false" onAction="#onCDRsSelected" text="CDRs" toggleGroup="$toggleGroup" />
+      </children>
+      <VBox.margin>
+         <Insets left="34.0" />
+      </VBox.margin>
+   </HBox>
+   <HBox fx:id="fieldsH" prefHeight="0.0" prefWidth="282.0">
+      <opaqueInsets>
+         <Insets />
+      </opaqueInsets>
+      <VBox.margin>
+         <Insets />
+      </VBox.margin></HBox>
+   <HBox fx:id="preH" prefHeight="26.0" prefWidth="219.0">
+      <children>
+         <Label fx:id="preL" prefHeight="18.0" prefWidth="66.0" text="Pre-Path" />
+         <TextField fx:id="preT" prefHeight="26.0" prefWidth="215.0" text="D:\DATA\Level 04\Graduation project\Test\Pre-Processing" />
+      </children>
+   </HBox>
+   <HBox fx:id="targetH" prefHeight="0.0" prefWidth="282.0">
+      <children>
+         <Label fx:id="targetL" prefHeight="18.0" prefWidth="67.0" text="Target Path" />
+         <TextField fx:id="targetT" prefHeight="26.0" prefWidth="214.0" text="D:\DATA\Level 04\Graduation project\Test\ASN" />
+      </children>
+   </HBox>
+   <HBox fx:id="intervalH" prefHeight="0.0" prefWidth="282.0">
+      <children>
+         <Label fx:id="intervalL" prefHeight="18.0" prefWidth="68.0" text="Interval(ms)" />
+         <TextField fx:id="intervalT" prefHeight="26.0" prefWidth="82.0" text="1000" />
+      </children>
+   </HBox>
+   <HBox fx:id="RPFH" prefHeight="0.0" prefWidth="282.0">
+      <children>
+         <Label fx:id="RPFL" prefHeight="18.0" prefWidth="68.0" text="Record/File" />
+         <TextField fx:id="RPFT" prefHeight="26.0" prefWidth="82.0" text="10" />
+      </children>
+   </HBox>
+   <HBox fx:id="nameH" prefHeight="0.0" prefWidth="282.0">
+      <children>
+         <Label fx:id="nameL" prefHeight="18.0" prefWidth="68.0" text="File Name" />
+         <TextField fx:id="nameT" prefHeight="26.0" prefWidth="84.0" text="File" />
+      </children>
+   </HBox>
+   <HBox fx:id="formatH" prefHeight="0.0" prefWidth="282.0">
+      <children>
+         <Label fx:id="formatL" prefHeight="18.0" prefWidth="69.0" text="Format" />
+         <ComboBox fx:id="formatC" prefHeight="26.0" prefWidth="82.0" promptText="CSV">
+            <items>
+               <FXCollections fx:factory="observableArrayList">
+                  <String fx:id="csv" fx:value="CSV" />
+                  <String fx:id="json" fx:value="JSON" />
+                  <String fx:id="asn1" fx:value="ASN.1" />
+               </FXCollections>
+            </items>
+         </ComboBox>
+      </children>
+   </HBox>
+   <HBox fx:id="delimiterH" prefHeight="0.0" prefWidth="282.0">
+      <children>
+         <Label fx:id="delimiterL" prefHeight="18.0" prefWidth="69.0" text="Delimiter" />
+         <ComboBox fx:id="delimiterC" prefHeight="26.0" prefWidth="82.0" promptText=",">
+            <items>
+               <FXCollections fx:factory="observableArrayList">
+                  <String fx:id="comma" fx:value="," />
+                  <String fx:id="hyphen" fx:value="-" />
+                  <String fx:id="slash" fx:value="/" />
+                  <String fx:id="semicolon" fx:value=";" />
+               </FXCollections>
+            </items>
+         </ComboBox>
+      </children>
+   </HBox>
+   <HBox fx:id="listH" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+      <children>
+         <VBox fx:id="buttonsV" prefHeight="178.0" prefWidth="59.0" spacing="5.0">
+            <children>
+               <Button fx:id="addBtn" mnemonicParsing="false" onAction="#onAddClicked" prefHeight="26.0" prefWidth="87.0" text="+" />
+               <Button fx:id="editBtn" mnemonicParsing="false" onAction="#onEditClicked" prefHeight="26.0" prefWidth="104.0" text="Edit" />
+               <Button fx:id="copyBtn" mnemonicParsing="false" prefHeight="26.0" prefWidth="99.0" text="Copy" />
+               <Button fx:id="removeBtn" mnemonicParsing="false" prefHeight="26.0" prefWidth="94.0" text="Remove" />
+               <Button fx:id="saveBtn" mnemonicParsing="false" prefHeight="26.0" prefWidth="112.0" text="Save" />
+               <Button fx:id="loadBtn" mnemonicParsing="false" prefHeight="26.0" prefWidth="99.0" text="Load" />
+            </children>
+         </VBox>
+         <ListView fx:id="list" prefHeight="178.0" prefWidth="211.0" />
+      </children>
+   </HBox>
+   <HBox fx:id="buttonsH" prefHeight="26.0" prefWidth="62.0" spacing="10.0">
+      <children>
+          <Button fx:id="generateBtn" onAction="#onGenerateClicked" text="Generate">
+            <HBox.margin>
+               <Insets left="60.0" />
+            </HBox.margin>
+         </Button>
+         <Button fx:id="stopBtn" disable="true" mnemonicParsing="false" onAction="#onStopClicked" text="Stop" />
+         <Button fx:id="resetBtn" mnemonicParsing="false" onAction="#onResetClicked" text="Reset" />
+      </children>
+      <VBox.margin>
+         <Insets top="10.0" />
+      </VBox.margin>
+   </HBox>
+</VBox>
