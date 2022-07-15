@@ -35,7 +35,7 @@ public class MeterReading {
         return "KWH";
     }
     private float setReading(){
-        return (random.nextFloat() * ((30 - 1) + 1)) + 1;
+        return random.nextFloat()*(0.5f-0)+0;
     }
 
     // Customized getters
