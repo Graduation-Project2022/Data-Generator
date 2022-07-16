@@ -100,10 +100,10 @@
             <children>
                <Button fx:id="addBtn" mnemonicParsing="false" onAction="#onAddClicked" prefHeight="26.0" prefWidth="87.0" text="+" />
                <Button fx:id="editBtn" mnemonicParsing="false" onAction="#onEditClicked" prefHeight="26.0" prefWidth="104.0" text="Edit" />
-               <Button fx:id="copyBtn" mnemonicParsing="false" prefHeight="26.0" prefWidth="99.0" text="Copy" />
-               <Button fx:id="removeBtn" mnemonicParsing="false" prefHeight="26.0" prefWidth="94.0" text="Remove" />
-               <Button fx:id="saveBtn" mnemonicParsing="false" prefHeight="26.0" prefWidth="112.0" text="Save" />
-               <Button fx:id="loadBtn" mnemonicParsing="false" prefHeight="26.0" prefWidth="99.0" text="Load" />
+               <Button fx:id="copyBtn" mnemonicParsing="false" onAction="#onCopyClicked" prefHeight="26.0" prefWidth="99.0" text="Copy" />
+               <Button fx:id="removeBtn" mnemonicParsing="false" onAction="#onRemoveClicked" prefHeight="26.0" prefWidth="94.0" text="Remove" />
+               <Button fx:id="saveBtn" mnemonicParsing="false" onAction="#onSaveClicked" prefHeight="26.0" prefWidth="112.0" text="Save" />
+               <Button fx:id="loadBtn" mnemonicParsing="false" onAction="#onLoadClicked" prefHeight="26.0" prefWidth="99.0" text="Load" />
             </children>
          </VBox>
          <ListView fx:id="list" prefHeight="178.0" prefWidth="211.0" />

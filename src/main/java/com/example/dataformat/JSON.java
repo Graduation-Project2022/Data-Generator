@@ -45,6 +45,11 @@ public class JSON {
     }
     public void copy(String path){
         try {
+            fileWriter.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        try {
             Files.copy(Paths.get(prePath + "\\" + this.fileName), Paths.get(path + "\\" + this.fileName));
         } catch (IOException e) {
             throw new RuntimeException(e);

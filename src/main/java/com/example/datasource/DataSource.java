@@ -109,4 +109,36 @@ public class DataSource extends Thread{
     public void play(){
         this.resume();
     }
+
+    public String getDataSourceType() {
+        return dataSourceType;
+    }
+
+    public String getPrePath() {
+        return prePath;
+    }
+
+    public String getTargetPath() {
+        return targetPath;
+    }
+
+    public String getFileName() {
+        return fileName;
+    }
+
+    public String getFormat() {
+        return format;
+    }
+
+    public String getDelimiter() {
+        return delimiter;
+    }
+
+    public int getInterval() {
+        return interval;
+    }
+
+    public int getRPF() {
+        return RPF;
+    }
 }
