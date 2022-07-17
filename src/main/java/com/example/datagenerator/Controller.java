@@ -196,9 +196,11 @@ public class Controller implements Initializable {
     }
     @FXML
     protected void onCopyClicked(){
-
-
-
+        try{
+            dataSources.add(dataSources.get(list.getSelectionModel().getSelectedIndex()));
+            list.getItems().add(list.getSelectionModel().getSelectedItem());
+        }
+        catch (Exception e){}
     }
     @FXML
     protected void onRemoveClicked(){
