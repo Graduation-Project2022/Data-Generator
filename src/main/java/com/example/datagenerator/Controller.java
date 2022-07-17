@@ -173,6 +173,15 @@ public class Controller implements Initializable {
             loadBtn.setDisable(true);
         }
         else{
+            DataSource editing = dataSources.get(list.getSelectionModel().getSelectedIndex());
+            editing.setDataSourceType(dataSourceType);
+            editing.setPrePath(preT.getText());
+            editing.setTargetPath(targetT.getText());
+            editing.setFileName(nameT.getText());
+            editing.setFormat(formatC.getSelectionModel().getSelectedItem().toString());
+            editing.setDelimiter(delimiterC.getSelectionModel().getSelectedItem().toString());
+            editing.setInterval(Integer.parseInt(intervalT.getText()));
+            editing.setRPF(Integer.parseInt(RPFT.getText()));
             editBtn.setText("Edit");
             list.setDisable(false);
             generateBtn.setDisable(false);
@@ -189,12 +198,12 @@ public class Controller implements Initializable {
     protected void onCopyClicked(){
 
 
+
     }
     @FXML
     protected void onRemoveClicked(){
-
-
-
+        dataSources.remove(list.getSelectionModel().getSelectedIndex());
+        list.getItems().remove(list.getSelectionModel().getSelectedIndex());
+        numberOfDataSources-=1;
     }
-
 }

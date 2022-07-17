@@ -141,4 +141,36 @@ public class DataSource extends Thread{
     public int getRPF() {
         return RPF;
     }
+
+    public void setDataSourceType(String dataSourceType) {
+        this.dataSourceType = dataSourceType;
+    }
+
+    public void setPrePath(String prePath) {
+        this.prePath = prePath;
+    }
+
+    public void setTargetPath(String targetPath) {
+        this.targetPath = targetPath;
+    }
+
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
+    }
+
+    public void setFormat(String format) {
+        this.format = format;
+    }
+
+    public void setDelimiter(String delimiter) {
+        this.delimiter = delimiter;
+    }
+
+    public void setInterval(int interval) {
+        this.interval = interval;
+    }
+
+    public void setRPF(int RPF) {
+        this.RPF = RPF;
+    }
 }
